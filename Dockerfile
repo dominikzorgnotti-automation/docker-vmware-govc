@@ -12,7 +12,8 @@ RUN mv govc_linux_amd64 /out/govc
 RUN chmod +x /out/*
 
 FROM alpine
-RUN apk add jq wget md5sum
+RUN apk update
+RUN apk add wget jq outils-md5
 COPY --from=0 /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 COPY --from=0 /out/* /usr/local/bin/
 CMD ["/bin/sh"]
