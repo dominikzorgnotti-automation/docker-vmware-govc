@@ -13,7 +13,7 @@ RUN chmod +x /out/*
 
 FROM alpine
 RUN apk update
-RUN apk add wget jq outils-md5
+RUN apk add wget jq outils-md5 bash
 COPY --from=0 /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 COPY --from=0 /out/* /usr/local/bin/
-CMD ["/bin/sh"]
+CMD ["/bin/bash"]
